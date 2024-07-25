@@ -1,0 +1,6 @@
+# ignore the virtual environment file
+.venv/
+
+# ignore the env files ;  .env and .flaskenv
+.env/
+.flaskenv

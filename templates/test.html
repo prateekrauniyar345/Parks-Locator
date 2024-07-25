@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST-DATA</title>
+</head>
+<body>
+    <div class="data">
+        <h5>Received_data is:</h5>
+        {% if received_data %}
+        <pre>{{ received_data | tojson(indent=2) }}</pre>
+        {% else %}
+        <p>No data received.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
