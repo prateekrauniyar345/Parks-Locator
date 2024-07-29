@@ -1,54 +1,57 @@
-body{
+html, body {
+    margin: 0;
     padding: 0;
-    margin : 0;
-    /* margin-left: 30px; */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+body {
+    padding: 0;
+    margin: 0;
     background-color: #3e4c59;
     box-sizing: border-box;
+    font-size: 1rem;  /* 1rem is 16px */
 }
-.header-row{
+
+.header-row {
     background-color: #b1d1da;
     width: 100%;
-    height: fit-content;
+    height: 8rem;
     padding: 6px;
-    /* margin-top: 8px; */
-
+    margin: auto;
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center; /* Center text inside the child */
 }
-.header{
+
+.header {
     color: white;
 }
-.inst_and_map{
-    /* border: 2px solid black; */
-    width: calc(100% - 80px); /* Adjust width to account for margins */
-    margin: 20px auto; /* Center the container */
-    padding: 20px;
-    height: fit-content;
+
+.inst_and_map {
+    width: 100%; /* Full width of the parent container */
+    max-width: 100rem; /* Optional max-width to maintain layout constraints */
+    padding: 4rem 5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap : 4.5rem;
     box-sizing: border-box;
+    margin: auto;
 }
-#inst,#map{
-    height : 400px;
-    width : 550px;
+
+#inst, #map {
+    flex: 1; /* Ensures both divs take equal space */
+    /* margin: 1rem 1rem; */
     border: 1px solid black;
-    border-radius: 8px;
-    box-shadow: 2px 2px 2px 2px rgba(0 0 0/ 20%);
-}
-.zoom-level-control{
-    position: absolute;
-    top: 20px;
-    right : 80px;
-    color: white;
-    background: black;
-    padding: 5px;
-    border: 1px solid #ccc;
-    z-index: 1000;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 20%);
+    box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
 #line1{
     color: white;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 2rem 2rem;
 }
 
 .para{
@@ -63,11 +66,16 @@ body{
 #btn{
     display: flex;
     justify-content: center;
+    justify-content: center;
+    gap: 2rem;
+
 }
 .button{
-    height: 38px;
-    width: 110px;
+    height: 3rem;
+    width: 8rem;
     border-radius: 8px;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
     background-color: #e1c5c3;
     border : none;
     cursor: pointer;
@@ -85,27 +93,148 @@ body{
     background-color: #f4c2bd;
     transform: scale(1.09); /* Enlarge the button on hover */
 }
-.res, .foo{
+
+.res {
+    width: 100%; /* Full width of the parent container */
+    max-width: 100rem; /* Optional max-width to maintain layout constraints */
+    padding:  0.2rem 5rem;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.result-to-hide{
+    width: 100%;  
+    border: none;
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Include padding and border in the width */
+    padding: 3rem;
+    overflow: hidden;      /* Prevent overflow */
+    position: relative;
+}
+
+.result {
+    display: none;
+    width: 100%;  
+    height: 40rem;
+    border: none;
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid black;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+.foo{
+    display: felx;
+    text-align: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+
+
+/* styling the table */
+
+table{
+    background: #b1d1da;
+    border-collapse: collapse;
+    color: black;
+    width: 100%;
+    /* padding: 0.4rem; */
+    table-layout: fixed; /* Fixed table layout */
+    border-radius: 1rem;
+    border: none;
+}
+th, td{
+    padding : 1rem;
+}
+
+th{
+    text-align: center;
+}
+
+th{
+    background: #3e4c59;
+}
+tr:nth-of-type(2n){
+    background: #fcfcfc;
+}
+
+
+/* implement the blur effct */
+.table-container{
+    filter: blur(3px);
+}
+
+.result-message {
+   position: absolute;
+   background-color: #e1c5c3;
+   top : 50%;
+   left : 50%;
+   transform: translate(-50%, -50%);
+   padding: 1rem;
+   z-index: 10;
+   box-sizing: border-box;
+   text-align: center;
+   border-radius: 1rem;
+   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+   color: black;
+   border: 0.01rem solid;
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #202830;
+    color: white;
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    padding: 2rem;
+    margin-top: 3.5rem;
+}
+
+.footer h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem; /* Adjust as needed */
+}
+
+.footer p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.about-me, .quick-links, .contacts {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    box-sizing: border-box;
+
+}
+
+.icon-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 1rem; /* Space between icons */
 }
-.result{
-    height: 800px;
-    width : calc(100% - 122px);
-    border : none;
-    background-color: #e3ecee;
-    border-radius: 8px;
-    border: 1px solid black;
-    box-shadow: 2px 2px 2px rgba( 0 0 0 /20%);
+
+.icon-container a {
+    color: white; /* Icon color */
+    font-size: 1.5rem; /* Adjust icon size */
+    transition: color 0.3s;
 }
-.footer{
-    height: 100px;
-    width: 100%;
-    padding: 12px;
-    background-color: #202830;
-    margin-top: 40px;
-    border: 1px solid black;
+
+.icon-container a:hover {
+    color: #e1c5c3; /* Hover color */
+}
+.footer-bottom{
     text-align: center;
-    color: white;
 }

@@ -11,5 +11,22 @@
     <p class = "desc">After drawing the shape, click on Locate Park button below.</p>
 </div>
 <div id = "btn">
-    <button class = "button" type = "button" id = "btn-send" style = "font-weight: 500;">Located Park</button>
+    <button class = "button" type = "button" id = "btn-send-result" style = "font-weight: 500;">Located Park</button>
+    <button class = "button" type = "button" id = "btn-send-home" style = "font-weight: 500;">Try Again</button>
 </div>
+
+<!-- script for the result page -->
+ <script>
+    function goResult(){
+        window.location.href = '/result';
+    }
+
+    function goHome(){
+        window.location.href = '/'
+    }
+    const buttonHome = document.querySelector('#btn-send-home');
+    buttonHome.addEventListener('click', goHome);
+
+    const buttonResult = document.querySelector('#btn-send-result');
+    buttonResult.addEventListener('click', goResult);
+ </script>

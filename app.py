@@ -37,7 +37,6 @@ def result():
     drawn_json = received_data
     drawn_object = Shapefile(drawn_json)
     result = drawn_object.display_data()
-    # app.logger.info(f"The result is: {result}")
     return jsonify(result)
 
 if __name__ == '__main__':

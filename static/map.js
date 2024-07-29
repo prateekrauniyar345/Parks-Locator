@@ -107,7 +107,7 @@ map.on(L.Draw.Event.DELETED, function(event){
 
 /// Send GeoJSON data to Flask when the button is clicked
 document.addEventListener('DOMContentLoaded', function() {
-const button = document.querySelector('#btn-send');
+const button = document.querySelector('#btn-send-result');
 button.addEventListener('click', function() {
     // alert('button cliked.')
     var allGeojson = drawItems.toGeoJSON();
