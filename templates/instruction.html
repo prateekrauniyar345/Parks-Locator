@@ -14,15 +14,18 @@
     <button class = "button" type = "button" id = "btn-send-result" style = "font-weight: 500;">Located Park</button>
     <button class = "button" type = "button" id = "btn-send-home" style = "font-weight: 500;">Try Again</button>
 </div>
+{% if error %}
+        <p style="color:red; text-align: center;">{{error}}</p>
+{% endif %}
+
 
 <!-- script for the result page -->
  <script>
     function goResult(){
         window.location.href = '/result';
     }
-
     function goHome(){
-        window.location.href = '/'
+        window.location.href = '/';
     }
     const buttonHome = document.querySelector('#btn-send-home');
     buttonHome.addEventListener('click', goHome);

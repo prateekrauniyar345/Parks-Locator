@@ -32,12 +32,20 @@ def show_data():
 
 @app.route('/result', methods=['GET', 'POST'])
 def result():
-    if received_data is None:
-        return jsonify({"error": "No data received yet"}), 400
+    global received_data
+    # print(f"the received data is : {received_data}")
+    if  received_data == None or received_data['features'] == []:
+        error  = 'Please draw the shape on map and try again.'
+        received_data = None
+        return render_template('final.html', error = error)
     drawn_json = received_data
+    # print(f"drawn json is  : {drawn_json}")
     drawn_object = Shapefile(drawn_json)
-    result = drawn_object.display_data()
-    return jsonify(result)
+    if drawn_json is not None:
+        result = drawn_object.display_data()
+    # print(f"result is : {result}")
+    columns = ['FID','NAME','SQMI','TYPE','SHAPE AREA(sqm)', 'SHAPE PERI(m)']
+    return render_template('final.html', result=result, columns=columns, drawn_json = drawn_json)
 
 if __name__ == '__main__':
     app.run(debug=True)

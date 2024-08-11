@@ -74,6 +74,14 @@ var drawControl  = new L.Control.Draw({
     edit:{
         featureGroup : drawItems,    //link to th efeature group for editing\
         remove : true     //enable remove functionality (delete)
+    }, 
+    draw : {
+        circle: false, // Disable circle tool
+        marker: false,
+        polygon: true,
+        polyline: false,
+        rectangle: true,
+        circlemarker: false
     }
 }).addTo(map);
 
@@ -112,7 +120,6 @@ button.addEventListener('click', function() {
     // alert('button cliked.')
     var allGeojson = drawItems.toGeoJSON();
     console.log('All drawn GeoJSONs are: ', allGeojson);
-    
     fetch('/api/data', {
         method: 'POST',
         headers: {

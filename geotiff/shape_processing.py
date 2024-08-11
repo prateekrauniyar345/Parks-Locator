@@ -6,7 +6,7 @@ import tempfile
 
 class Shapefile:
     def __init__(self, drawn_json):
-        self.stats = []
+        self.stats = None
 
         if not drawn_json:
             self.error = "No user defined features"
@@ -63,7 +63,7 @@ class Shapefile:
                 # Convert to dictionary format
                 shape_dict = extracted_data.to_dict(orient='records')
                 # Append to stats list
-                self.stats.append(shape_dict)
+                self.stats = shape_dict
 
     def display_data(self):
         return {
