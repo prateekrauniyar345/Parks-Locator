@@ -150,7 +150,7 @@
                 </script>
                     {% for stat in result['stats'] %}
                     <tr>
-                        <td><a href="">{{ stat['FID'] }}</a></td>
+                        <td><a href="getData/fid" class="fid-link" data-fid="{{stat['FID']}}">{{ stat['FID'] }}</a></td>
                         <td>{{ stat['NAME'] }}</td>
                         <td>{{ stat['SQMI'] | round(2) }}</td>
                         <td>{{ stat['FEATTYPE'] }}</td>
@@ -165,4 +165,42 @@
         </table>
    </div>
 </div>
+<script>
+    // Declare a variable to store the current marker
+    let currentMarker = null;
 
+    function fetch_data(fid){
+        fetch(`/getData/${fid}`)
+            .then(response => response.json())
+            .then(data => {
+                // console.log("data is : ", data);
+                // console.log("x_cords : ", data["POINT_X"]);
+                // console.log("y_cord is : ",data["POINT_Y"]);
+                if (typeof map !== 'undefined') {
+                // Remove the existing marker if it exists
+                if (currentMarker) {
+                    map.removeLayer(currentMarker);
+                }
+
+                // Create a new marker and add it to the map
+                currentMarker = L.marker([data["POINT_Y"], data["POINT_X"]]);
+                currentMarker.addTo(map);
+                currentMarker.bindPopup(`Name : ${data["NAME"]}`).openPopup();
+                }
+            })
+            .catch(error => {
+                console.log("error in fetching data : ", error);
+            });
+    }
+    document.querySelectorAll('.fid-link').forEach(link => {
+        link.addEventListener('click', function(event){
+            event.preventDefault();
+             // Reset the color of all links
+            document.querySelectorAll('.fid-link').forEach(l => l.style.color = '');
+            this.style.color = 'red';
+            const fid_value = this.getAttribute('data-fid');
+            console.log("fid value is : ", fid_value)
+            fetch_data(fid_value);
+        });
+    });
+</script>
